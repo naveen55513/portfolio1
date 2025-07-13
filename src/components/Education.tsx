@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GraduationCap, Trophy, Calendar, MapPin, Award, Users } from 'lucide-react';
 
-const Education: React.FC = () => {
+const Education = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
