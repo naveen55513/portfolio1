@@ -164,3 +164,10 @@ body {
   background: linear-gradient(to right, transparent, #11efef, #E9967A, transparent);
   margin: 2rem 0;
 }
+
+/* Replace all background gradients with the new blue gradient */
+.bg-gradient-to-r, .bg-gradient-to-l, .bg-gradient-to-br, .bg-gradient-to-bl, .bg-gradient-to-t, .bg-gradient-to-b, .bg-gradient-to-tr, .bg-gradient-to-tl {
+  background: linear-gradient(to left, #0000cc 0%, #33ccff 100%) !important;
+}
+
+/* stylelint-disable at-rule-no-unknown */

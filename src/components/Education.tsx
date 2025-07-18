@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { GraduationCap, Trophy, Calendar, MapPin, Award, Users } from 'lucide-react';
-import profileImg from '../assets/profile.jpg'; // Adjust the path if needed
 
 const Education = () => {
   const [isVisible, setIsVisible] = useState(false);

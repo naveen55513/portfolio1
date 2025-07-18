@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Download, ExternalLink } from 'lucide-react';
+import profileImg from '../assets/myphoto.jpg';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -77,9 +78,11 @@ const Hero: React.FC = () => {
           >
             <div className="relative">
               <div className="w-80 h-80 rounded-full bg-gradient-to-r from-[#11efef] to-[#E9967A] p-1 animate-pulse">
-                <div className="w-full h-full rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
-                </div>
+                <img
+                  src={profileImg}
+                  alt="Profile"
+                  className="w-full h-full rounded-full object-cover border-4 border-[#E9967A] shadow-lg"
+                />
               </div>
               <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-2xl animate-bounce">
                 🚀
