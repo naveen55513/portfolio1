@@ -15,12 +15,12 @@ const Hero: React.FC = () => {
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-[#11efef] to-[#E9967A] rounded-full filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-[#E9967A] to-[#11efef] rounded-full filter blur-3xl opacity-20"></div>
+      <div className="absolute inset-0 opacity-10 z-0">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-[#11efef] to-[#E9967A] rounded-full filter blur-3xl opacity-10"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-[#E9967A] to-[#11efef] rounded-full filter blur-3xl opacity-10"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div
