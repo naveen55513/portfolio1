@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Download, ExternalLink } from 'lucide-react';
-import profileImg from '../assets/myphoto.jpg';
+import profileImg from '../asssets/port.jpg.jpg';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
