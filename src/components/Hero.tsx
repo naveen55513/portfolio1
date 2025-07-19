@@ -30,10 +30,7 @@ const Hero: React.FC = () => {
           >
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
-                👨‍💻 <span className="bg-gradient-to-r from-[#11efef] to-[#E9967A] bg-clip-text text-transparent">Naveen Singh</span>
-              </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
-                Chundawat
+                👨‍💻 <span className="bg-gradient-to-r from-[#11efef] to-[#E9967A] bg-clip-text text-transparent">Naveen Singh Chundawat</span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 font-medium">
                 ML Engineer | CS Undergrad | ML AND GEN AI
@@ -83,9 +80,6 @@ const Hero: React.FC = () => {
                   alt="Profile"
                   className="w-full h-full rounded-full object-cover border-4 border-[#E9967A] shadow-lg"
                 />
-              </div>
-              <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-2xl animate-bounce">
-                🚀
               </div>
             </div>
           </div>
