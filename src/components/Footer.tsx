@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
           <p className="text-gray-400 mb-8">ML Engineer | CS Undergrad | AI Enthusiast</p>
 
           {/* Divider */}
-          <div className="w-24 h-1 bg-gradient-to-r from-[#11efef] to-[#E9967A] mx-auto mb-8 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#11efef] to-[rgb(161,122,233)] mx-auto mb-8 rounded-full"></div>
 
           {/* Made with Love */}
           <div className="flex items-center justify-center space-x-2 text-gray-400 mb-6">
