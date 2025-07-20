@@ -7,11 +7,13 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingLines from './components/FloatingLines';
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen transition-colors duration-300">
+        <FloatingLines />
         <Header />
         <main>
           <Hero />

@@ -66,14 +66,14 @@ const Hero: React.FC = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
     >
       {/* Animated Background Blobs */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 opacity-30">
         <div className="animated-blob bg-purple-500 w-64 h-64 sm:w-96 sm:h-96 top-20 left-4 sm:left-20"></div>
         <div className="animated-blob bg-blue-500 w-56 h-56 sm:w-80 sm:h-80 top-40 right-4 sm:right-20" style={{ animationDelay: '2s' }}></div>
         <div className="animated-blob bg-pink-500 w-48 h-48 sm:w-72 sm:h-72 bottom-20 left-1/3" style={{ animationDelay: '4s' }}></div>
       </div>
 
       {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 radial-bg"></div>
+      <div className="absolute inset-0 radial-bg opacity-50"></div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">

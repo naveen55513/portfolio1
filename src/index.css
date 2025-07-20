@@ -16,6 +16,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Primary Color Scheme */
@@ -438,5 +440,190 @@ body {
   }
   100% {
     transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* Floating Lines Background Animation */
+.floating-lines-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.floating-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(102, 102, 153, 0.3), transparent);
+  border-radius: 50%;
+  animation: floatLine 20s linear infinite;
+  transform-origin: center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+.floating-line.thick {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(102, 102, 153, 0.4), transparent);
+  animation-duration: 25s;
+}
+
+.floating-line.thin {
+  height: 0.5px;
+  background: linear-gradient(90deg, transparent, rgba(102, 102, 153, 0.2), transparent);
+  animation-duration: 15s;
+}
+
+.floating-line.curved {
+  background: linear-gradient(90deg, transparent, rgba(51, 153, 255, 0.3), transparent);
+  animation-duration: 30s;
+}
+
+.floating-line.curved.thick {
+  background: linear-gradient(90deg, transparent, rgba(51, 153, 255, 0.4), transparent);
+}
+
+.floating-line.curved.thin {
+  background: linear-gradient(90deg, transparent, rgba(51, 153, 255, 0.2), transparent);
+}
+
+/* Sine wave motion animation */
+@keyframes floatLine {
+  0% {
+    transform: translateY(100vh) translateX(-100%) rotate(0deg) translateZ(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100vw) rotate(360deg) translateZ(0);
+    opacity: 0;
+  }
+}
+
+/* Parallax layers for depth */
+.floating-line.layer-1 {
+  animation-duration: 35s;
+  filter: blur(0.5px);
+}
+
+.floating-line.layer-2 {
+  animation-duration: 25s;
+  filter: blur(0.2px);
+}
+
+.floating-line.layer-3 {
+  animation-duration: 20s;
+  filter: blur(0px);
+}
+
+/* Glow effects */
+.floating-line.glow {
+  box-shadow: 0 0 10px rgba(102, 102, 153, 0.3);
+}
+
+.floating-line.curved.glow {
+  box-shadow: 0 0 10px rgba(51, 153, 255, 0.3);
+}
+
+/* Light mode adjustments */
+.light-mode .floating-line {
+  background: linear-gradient(90deg, transparent, rgba(102, 102, 153, 0.2), transparent);
+}
+
+.light-mode .floating-line.thick {
+  background: linear-gradient(90deg, transparent, rgba(102, 102, 153, 0.3), transparent);
+}
+
+.light-mode .floating-line.thin {
+  background: linear-gradient(90deg, transparent, rgba(102, 102, 153, 0.1), transparent);
+}
+
+.light-mode .floating-line.curved {
+  background: linear-gradient(90deg, transparent, rgba(51, 153, 255, 0.2), transparent);
+}
+
+.light-mode .floating-line.curved.thick {
+  background: linear-gradient(90deg, transparent, rgba(51, 153, 255, 0.3), transparent);
+}
+
+.light-mode .floating-line.curved.thin {
+  background: linear-gradient(90deg, transparent, rgba(51, 153, 255, 0.1), transparent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .floating-line {
+    animation-duration: 15s;
+  }
+  
+  .floating-line.thick {
+    animation-duration: 20s;
+  }
+  
+  .floating-line.thin {
+    animation-duration: 12s;
+  }
+  
+  .floating-line.curved {
+    animation-duration: 25s;
+  }
+  
+  .floating-line.layer-1 {
+    animation-duration: 30s;
+  }
+  
+  .floating-line.layer-2 {
+    animation-duration: 20s;
+  }
+  
+  .floating-line.layer-3 {
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-line {
+    animation-duration: 12s;
+  }
+  
+  .floating-line.thick {
+    animation-duration: 16s;
+  }
+  
+  .floating-line.thin {
+    animation-duration: 10s;
+  }
+  
+  .floating-line.curved {
+    animation-duration: 20s;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating-line {
+    animation: none;
+    opacity: 0.1;
+  }
+}
+
+/* Safari and WebKit specific fixes */
+@supports (-webkit-appearance: none) {
+  .floating-line {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
   }
 }
