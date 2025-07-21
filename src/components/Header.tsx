@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);

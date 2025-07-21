@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Download, ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
-import profileImg from '../asssets/port.jpg.jpg';
+import profileImg from '../assets/port.jpg';
+
+const texts = [
+  "Hi, I'm Naveen | DevOps & AI Enthusiast",
+  "Hi, I'm Naveen | ML Engineer",
+  "Hi, I'm Naveen | CS Undergrad"
+];
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typingText, setTypingText] = useState('');
-
-  const texts = [
-    "Hi, I'm Naveen | DevOps & AI Enthusiast",
-    "Hi, I'm Naveen | ML Engineer",
-    "Hi, I'm Naveen | CS Undergrad"
-  ];
 
   useEffect(() => {
     setIsVisible(true);
