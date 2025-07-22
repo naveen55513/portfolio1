@@ -8,6 +8,8 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingLines from './components/FloatingLines';
+import SkillsSection from './components/SkillsSection';
+import PythonTasksSection from './components/PythonTasksSection';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
         <Header />
         <main>
           <Hero />
+          <SkillsSection />
           <TechStack />
+          <PythonTasksSection />
           <Projects />
           <Education />
           <Contact />
