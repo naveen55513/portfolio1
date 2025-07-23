@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaFileAlt, FaEnvelope, FaCloudDownloadAlt, FaChartBar, FaSearch, FaServer, FaCode } from 'react-icons/fa';
+import { Github, Linkedin } from 'lucide-react';
 
 // Define a type for the icon
 import type { IconType } from 'react-icons/lib';
@@ -140,6 +141,28 @@ const Projects: React.FC = () => {
                 <span className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                   {task.name}
                 </span>
+                <div className="flex gap-3 mt-2 justify-center sm:justify-end w-full">
+                  <a
+                    href="https://github.com/naveen55513"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View GitHub"
+                    title="View GitHub"
+                    className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  >
+                    <Github size={18} className="text-gray-700 dark:text-gray-200" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/naveen-chundawat-4300822bb/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View LinkedIn"
+                    title="View LinkedIn"
+                    className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  >
+                    <Linkedin size={18} className="text-blue-700 dark:text-blue-300" />
+                  </a>
+                </div>
               </div>
             );
           })}

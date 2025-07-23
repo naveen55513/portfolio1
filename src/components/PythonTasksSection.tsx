@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { useTheme } from '../contexts/ThemeContext';
 import { FaRegBookmark, FaBookmark, FaDownload } from 'react-icons/fa';
+import { Github, Linkedin } from 'lucide-react';
 
 // Task data model
 interface PythonTask {
@@ -143,6 +144,28 @@ const PythonTasksSection: React.FC = () => {
               <div className="text-4xl mb-2">{task.icon}</div>
               <div className="font-semibold text-lg mb-1 font-poppins">{task.title}</div>
               <div className="text-gray-500 dark:text-gray-300 text-sm mb-2">{task.desc}</div>
+              <div className="flex gap-3 mt-2 justify-center w-full">
+                <a
+                  href="https://github.com/naveen55513"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View GitHub"
+                  title="View GitHub"
+                  className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  <Github size={18} className="text-gray-700 dark:text-gray-200" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/naveen-chundawat-4300822bb/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View LinkedIn"
+                  title="View LinkedIn"
+                  className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  <Linkedin size={18} className="text-blue-700 dark:text-blue-300" />
+                </a>
+              </div>
               <div className="absolute top-3 right-3 z-10" onClick={() => { handleBookmark(task.title); }}>
                 {bookmarks.includes(task.title) ? <FaBookmark className="text-yellow-400" /> : <FaRegBookmark className="text-gray-400 hover:text-yellow-400" />}
               </div>
@@ -177,13 +200,35 @@ const PythonTasksSection: React.FC = () => {
                 {modalTask.code}
               </SyntaxHighlighter>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-4">
               <button onClick={() => handleDownload(modalTask)} className="flex items-center gap-1 px-3 py-2 rounded-lg bg-yellow-300 text-blue-900 font-semibold hover:bg-yellow-400 transition font-poppins">
                 <FaDownload /> Download .py
               </button>
               <button onClick={() => handleBookmark(modalTask.title)} className="flex items-center gap-1 px-3 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition font-poppins">
                 {bookmarks.includes(modalTask.title) ? <FaBookmark /> : <FaRegBookmark />} Favorite
               </button>
+            </div>
+            <div className="flex gap-3 mt-2 justify-center w-full">
+              <a
+                href="https://github.com/naveen55513"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View GitHub"
+                title="View GitHub"
+                className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <Github size={18} className="text-gray-700 dark:text-gray-200" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/naveen-chundawat-4300822bb/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View LinkedIn"
+                title="View LinkedIn"
+                className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <Linkedin size={18} className="text-blue-700 dark:text-blue-300" />
+              </a>
             </div>
           </div>
         )}
