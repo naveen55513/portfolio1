@@ -9,7 +9,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['react-icons/fa', 'react-modal', 'framer-motion'],
+      external: ['react-icons/fa', 'react-modal', 'framer-motion', 'react-syntax-highlighter'],
     },
   },
 });
