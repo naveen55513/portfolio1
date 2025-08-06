@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws, FaJava, FaCuttlefish, FaCuttlefish as FaCPlusPlus } from 'react-icons/fa/index.js';
-import { SiStreamlit, SiMongodb, SiOpenai, SiCicd } from 'react-icons/si';
-import { Tooltip } from 'react-tooltip';
+import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws, FaJava, FaCuttlefish, FaCuttlefish as FaCPlusPlus } from 'react-icons/fa';
+import { SiStreamlit, SiMongodb, SiOpenai } from 'react-icons/si';
 
 const skillTabs = [
   { key: 'languages', label: 'Languages', icon: '💻' },
@@ -11,22 +10,22 @@ const skillTabs = [
 
 const skillsData = {
   languages: [
-    { icon: <FaCuttlefish size={32} aria-label="C" />, title: 'C', desc: 'Procedural programming language.' },
-    { icon: <FaCPlusPlus size={32} aria-label="C++" />, title: 'C++', desc: 'Object-oriented and systems programming.' },
-    { icon: <FaJava size={32} aria-label="Java" />, title: 'Java', desc: 'Cross-platform, object-oriented language.' },
-    { icon: <FaPython size={32} aria-label="Python" />, title: 'Python', desc: 'Versatile scripting and ML language.' },
+    { icon: FaCuttlefish, title: 'C', desc: 'Procedural programming language.' },
+    { icon: FaCPlusPlus, title: 'C++', desc: 'Object-oriented and systems programming.' },
+    { icon: FaJava, title: 'Java', desc: 'Cross-platform, object-oriented language.' },
+    { icon: FaPython, title: 'Python', desc: 'Versatile scripting and ML language.' },
   ],
   devtools: [
-    { icon: <FaGitAlt size={32} aria-label="Git" />, title: 'Git', desc: 'Version control and collaboration.' },
-    { icon: <FaDocker size={32} aria-label="Docker" />, title: 'Docker', desc: 'Containerization for reproducible environments.' },
-    { icon: <SiStreamlit size={32} aria-label="Streamlit" />, title: 'Streamlit', desc: 'Rapid prototyping for ML/data apps.' },
-    { icon: <FaLinux size={32} aria-label="Linux" />, title: 'Linux', desc: 'Preferred OS for development and deployment.' },
+    { icon: FaGitAlt, title: 'Git', desc: 'Version control and collaboration.' },
+    { icon: FaDocker, title: 'Docker', desc: 'Containerization for reproducible environments.' },
+    { icon: SiStreamlit, title: 'Streamlit', desc: 'Rapid prototyping for ML/data apps.' },
+    { icon: FaLinux, title: 'Linux', desc: 'Preferred OS for development and deployment.' },
   ],
   cloud: [
-    { icon: <SiMongodb size={32} aria-label="MongoDB" />, title: 'MongoDB', desc: 'Backend NoSQL Database.' },
-    { icon: <FaAws size={32} aria-label="AWS" />, title: 'AWS', desc: 'Cloud infrastructure and services.' },
-    { icon: <SiCicd size={32} aria-label="CI/CD" />, title: 'CI/CD Pipelines', desc: 'Continuous integration and deployment.' },
-    { icon: <SiOpenai size={32} aria-label="OpenAI API" />, title: 'OpenAI API', desc: 'Generative AI and NLP capabilities.' },
+    { icon: SiMongodb, title: 'MongoDB', desc: 'Backend NoSQL Database.' },
+    { icon: FaAws, title: 'AWS', desc: 'Cloud infrastructure and services.' },
+    { icon: FaDocker, title: 'CI/CD Pipelines', desc: 'Continuous integration and deployment.' },
+    { icon: SiOpenai, title: 'OpenAI API', desc: 'Generative AI and NLP capabilities.' },
   ],
 };
 
@@ -93,26 +92,16 @@ const SkillsSection: React.FC = () => {
               style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
               tabIndex={0}
               aria-label={item.title}
+              title={item.desc}
             >
               <div
                 className="mb-3 p-4 rounded-xl bg-white/30 dark:bg-gray-800/40 shadow-md backdrop-blur-md transition-transform duration-300 hover:scale-110 hover:shadow-xl focus:scale-110 focus:shadow-xl"
-                data-tooltip-id={`tooltip-${activeTab}-${idx}`}
-                data-tooltip-content={item.desc}
-                aria-describedby={`tooltip-${activeTab}-${idx}`}
               >
-                {item.icon}
+                {React.createElement(item.icon as any, { size: 32, 'aria-label': item.title })}
               </div>
               <span className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                 {item.title}
               </span>
-              <Tooltip
-                id={`tooltip-${activeTab}-${idx}`}
-                place="top"
-                effect="solid"
-                className="z-50 text-xs px-2 py-1 rounded bg-gray-900 text-white dark:bg-white dark:text-gray-900"
-              >
-                {item.desc}
-              </Tooltip>
             </div>
           ))}
         </div>
