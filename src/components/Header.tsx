@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'glass-card backdrop-blur-xl shadow-2xl'
+          ? 'bg-white dark:bg-gray-900 backdrop-blur-xl shadow-2xl'
           : 'bg-transparent'
       }`}
     >
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
                 }`}
               >
                 {item.label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 ${
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-300 transition-all duration-300 ${
                   activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}></span>
               </button>
@@ -159,8 +159,8 @@ const Header: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 sm:px-6 py-2 sm:py-3 text-gray-300 hover:text-white hover:bg-purple-500/20 transition-all duration-300 font-medium text-sm sm:text-base ${
-                  activeSection === item.id ? 'text-white bg-purple-500/30' : ''
+                className={`block w-full text-left px-4 sm:px-6 py-2 sm:py-3 text-gray-300 hover:text-white hover:bg-blue-500/20 transition-all duration-300 font-medium text-sm sm:text-base ${
+                  activeSection === item.id ? 'text-white bg-blue-500/30' : ''
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >

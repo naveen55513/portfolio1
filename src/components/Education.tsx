@@ -98,7 +98,10 @@ const Education = () => {
                     B.Tech in Computer Science
                   </h3>
                   <p className="text-[#E9967A] font-semibold text-lg">
-                    Arya Institute of Engineering Technology
+                    Arya Institute of Engineering Technology & Management
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    AICTE approved, affiliated with RTU, Kota. Known for excellent technical education and industry connections.
                   </p>
                 </div>
               </div>

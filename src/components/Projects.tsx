@@ -87,7 +87,7 @@ const Projects: React.FC = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 relative z-10"
+      className="py-20 relative z-10 bg-white dark:bg-gray-900"
       aria-labelledby="python-tasks-title"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,8 +119,11 @@ const Projects: React.FC = () => {
             return (
               <div
                 key={task.name}
-                className={`glass-card p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition-all duration-700 ${visible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}
-                style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
+                className={`glass-card p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ 
+                  animationDelay: `${idx * 0.1 + 0.2}s`,
+                  transitionDelay: `${idx * 0.1}s`
+                }}
                 tabIndex={0}
                 aria-label={task.name}
               >
@@ -131,11 +134,11 @@ const Projects: React.FC = () => {
                   aria-describedby={`tooltip-task-${idx}`}
                 >
                   {Icon && (
-                    React.createElement(Icon as unknown as React.FC<unknown>, {
+                    React.createElement(Icon as unknown as React.FC<{ size: number; className: string; "aria-label": string }>, {
                       size: 36,
                       className: "mb-2 text-blue-500 dark:text-blue-300",
                       "aria-label": task.name
-                    } as any)
+                    })
                   )}
                 </div>
                 <span className="text-lg font-semibold text-gray-900 dark:text-white mb-1">

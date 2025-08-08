@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws, FaJava, FaCuttlefish, FaCuttlefish as FaCPlusPlus, FaTools } from 'react-icons/fa';
-import { SiStreamlit, SiMongodb, SiOpenai } from 'react-icons/si';
+import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws, FaJava, FaCuttlefish, FaTools } from 'react-icons/fa';
+import { SiStreamlit, SiMongodb, SiOpenai, SiCplusplus } from 'react-icons/si';
 import type { IconType } from 'react-icons';
 import { Github, Linkedin } from 'lucide-react';
 
@@ -19,7 +19,7 @@ type SkillItem = {
 const skillsData: Record<string, SkillItem[]> = {
   languages: [
     { icon: FaCuttlefish, title: 'C', desc: 'Procedural programming language.' },
-    { icon: FaCPlusPlus, title: 'C++', desc: 'Object-oriented and systems programming.' },
+    { icon: SiCplusplus, title: 'C++', desc: 'Object-oriented and systems programming.' },
     { icon: FaJava, title: 'Java', desc: 'Cross-platform, object-oriented language.' },
     { icon: FaPython, title: 'Python', desc: 'Versatile scripting and ML language.' },
   ],
@@ -56,7 +56,7 @@ const SkillsSection: React.FC = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-20 relative z-10"
+      className="py-20 relative z-10 bg-white dark:bg-gray-900"
       aria-labelledby="skills-title"
     >
       {/* NSC Monogram/Avatar */}
@@ -97,8 +97,11 @@ const SkillsSection: React.FC = () => {
           {skillsData[activeTab as keyof typeof skillsData].map((item, idx) => (
             <div
               key={item.title}
-              className={`glass-card p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition-all duration-700 ${visible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}
-              style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
+              className={`glass-card p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ 
+                animationDelay: `${idx * 0.1 + 0.2}s`,
+                transitionDelay: `${idx * 0.1}s`
+              }}
               tabIndex={0}
               aria-label={item.title}
             >
@@ -143,4 +146,4 @@ const SkillsSection: React.FC = () => {
   );
 };
 
-export default SkillsSection; 
+export default SkillsSection;

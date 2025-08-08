@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    include: ['lucide-react', 'react-icons/fa', 'react-modal', 'framer-motion', 'react-syntax-highlighter'],
   },
   build: {
     rollupOptions: {
-      external: ['react-icons/fa', 'react-modal', 'framer-motion', 'react-syntax-highlighter'],
+      // No need to exclude these dependencies as they should be bundled
     },
   },
 });

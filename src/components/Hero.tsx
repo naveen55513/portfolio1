@@ -6,14 +6,14 @@ const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typingText, setTypingText] = useState('');
 
-  const texts = [
-    "Hi, I'm Naveen | AI Enthusiast",
-    "Hi, I'm Naveen | ML Engineer",
-    "Hi, I'm Naveen | CS Undergrad"
-  ];
-
   useEffect(() => {
     setIsVisible(true);
+    
+    const texts = [
+      "Hi, I'm Naveen | AI Enthusiast",
+      "Hi, I'm Naveen | ML Engineer",
+      "Hi, I'm Naveen | CS Undergrad"
+    ];
     
     // Typing animation with proper cleanup
     let currentIndex = 0;
@@ -63,13 +63,13 @@ const Hero: React.FC = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 bg-white dark:bg-gray-900"
     >
       {/* Animated Background Blobs */}
       <div className="absolute inset-0 opacity-30">
-        <div className="animated-blob bg-purple-500 w-64 h-64 sm:w-96 sm:h-96 top-20 left-4 sm:left-20"></div>
-        <div className="animated-blob bg-blue-500 w-56 h-56 sm:w-80 sm:h-80 top-40 right-4 sm:right-20" style={{ animationDelay: '2s' }}></div>
-        <div className="animated-blob bg-pink-500 w-48 h-48 sm:w-72 sm:h-72 bottom-20 left-1/3" style={{ animationDelay: '4s' }}></div>
+        <div className="animated-blob bg-blue-500 w-64 h-64 sm:w-96 sm:h-96 top-20 left-4 sm:left-20"></div>
+        <div className="animated-blob bg-blue-600 w-56 h-56 sm:w-80 sm:h-80 top-40 right-4 sm:right-20" style={{ animationDelay: '2s' }}></div>
+        <div className="animated-blob bg-blue-400 w-48 h-48 sm:w-72 sm:h-72 bottom-20 left-1/3" style={{ animationDelay: '4s' }}></div>
       </div>
 
       {/* Radial Gradient Overlay */}
@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
             }`}>
               <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
                 I'm a passionate Computer Science Engineering student (3rd Year, B.Tech) at{' '}
-                <span className="gradient-text font-semibold">Arya Institute of Engineering Technology, Jaipur</span>.
+                <span className="text-blue-400 font-semibold">Arya Institute of Engineering Technology & Management, Jaipur</span> - a premier engineering college in Rajasthan.
                 With a strong drive for innovation, I specialize in Python automation, Machine Learning, Generative AI, and real-world system integration projects.
               </p>
             </div>
@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
               </button>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-500 text-purple-400 font-semibold rounded-xl hover:bg-purple-500 hover:text-white transition-all duration-300 text-base sm:text-lg"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 text-blue-400 font-semibold rounded-xl hover:bg-blue-500 hover:text-white transition-all duration-300 text-base sm:text-lg"
               >
                 <ExternalLink size={18} className="sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                 Let's Connect
@@ -184,9 +184,9 @@ const Hero: React.FC = () => {
               {/* Floating Name Below Image */}
               <div className="mt-6 sm:mt-8 animate-float" style={{ animationDelay: '0.5s' }}>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
-                  <span className="gradient-text">Naveen Singh</span>
+                  <span className="text-blue-500">Naveen Singh</span>
                   <br />
-                  <span className="gradient-text">Chundawat</span>
+                  <span className="text-blue-500">Chundawat</span>
                 </h2>
               </div>
             </div>

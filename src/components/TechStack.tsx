@@ -71,7 +71,7 @@ const TechStack: React.FC = () => {
     <section
       id="tech-stack"
       ref={sectionRef}
-      className="py-20 relative z-10"
+      className="py-20 relative z-10 bg-white dark:bg-gray-900"
       aria-labelledby="tech-stack-title"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,8 +105,8 @@ const TechStack: React.FC = () => {
                       aria-describedby={`tooltip-${group.title}-${i}`}
                     >
                       {(() => {
-                        const Icon = item.icon as unknown as React.FC<unknown>;
-                        return <Icon {...({ size: 32, 'aria-label': item.title } as any)} />;
+                        const Icon = item.icon as unknown as React.FC<{ size: number; 'aria-label': string }>;
+                        return <Icon size={32} aria-label={item.title} />;
                       })()}
                     </div>
                     <span className="text-base font-medium text-gray-800 dark:text-gray-200">

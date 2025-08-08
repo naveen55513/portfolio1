@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden"
+      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-20">
