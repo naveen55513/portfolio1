@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 import { FaRegBookmark, FaBookmark, FaDownload } from 'react-icons/fa/index.js';
 
 // Task data model
@@ -212,4 +212,4 @@ const PythonTasksSection: React.FC = () => {
   );
 };
 
-export default PythonTasksSection; 
+export default PythonTasksSection;
