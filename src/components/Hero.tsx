@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const [typingText, setTypingText] = useState('');
 
   const texts = [
-    "Hi, I'm Naveen | DevOps & AI Enthusiast",
+    "Hi, I'm Naveen | AI Enthusiast",
     "Hi, I'm Naveen | ML Engineer",
     "Hi, I'm Naveen | CS Undergrad"
   ];

@@ -1,190 +1,147 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Code, Server, Cloud, Bot, Terminal, GitBranch } from 'lucide-react';
+import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws } from 'react-icons/fa';
+import { SiStreamlit, SiOpenai, SiCloudfoundry } from 'react-icons/si';
+import { FaTools } from 'react-icons/fa';
+import { Github, Linkedin } from 'lucide-react';
+
+const techGroups = [
+  {
+    title: 'Languages',
+    items: [
+      {
+        icon: FaPython, title: 'Python', desc: 'Versatile scripting and ML language.'
+      }
+    ]
+  },
+  {
+    title: 'Tools',
+    items: [
+      {
+        icon: FaDocker, title: 'Docker', desc: 'Containerization for reproducible environments.'
+      },
+      {
+        icon: FaLinux, title: 'Linux', desc: 'Preferred OS for development and deployment.'
+      },
+      {
+        icon: FaGitAlt, title: 'Git', desc: 'Version control and collaboration.'
+      },
+      {
+        icon: SiStreamlit, title: 'Streamlit', desc: 'Rapid prototyping for ML/data apps.'
+      }
+    ]
+  },
+  {
+    title: 'Cloud / DevOps',
+    items: [
+      {
+        icon: FaAws, title: 'AWS', desc: 'Cloud infrastructure and services.'
+      },
+      {
+        icon: FaTools, title: 'CI/CD', desc: 'Continuous integration and deployment.'
+      },
+      {
+        icon: SiCloudfoundry, title: 'Cloud Platforms', desc: 'Modern cloud platforms for scalable apps.'
+      }
+    ]
+  },
+  {
+    title: 'AI APIs',
+    items: [
+      {
+        icon: SiOpenai, title: 'OpenAI API', desc: 'Generative AI and NLP capabilities.'
+      }
+    ]
+  }
+];
 
 const TechStack: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
-
-  const techCategories = [
-    {
-      title: 'Core Languages',
-      icon: <Code className="w-6 h-6" />,
-      skills: ['Python', 'HTML', 'CSS', 'JavaScript', 'TypeScript'],
-      color: 'from-blue-500 to-purple-600'
-    },
-    {
-      title: 'DevOps & Cloud',
-      icon: <Cloud className="w-6 h-6" />,
-      skills: ['Docker', 'Linux', 'Git', 'CI/CD', 'AWS'],
-      color: 'from-green-500 to-teal-600'
-    },
-    {
-      title: 'Frameworks & Tools',
-      icon: <Server className="w-6 h-6" />,
-      skills: ['Streamlit', 'OpenAI API', 'GitHub Actions', 'React', 'Node.js'],
-      color: 'from-orange-500 to-red-600'
-    },
-    {
-      title: 'Specialties',
-      icon: <Bot className="w-6 h-6" />,
-      skills: ['WhatsApp Automation', 'Email Automation', 'SMS Automation', 'Google Search API', 'RAM Monitoring'],
-      color: 'from-purple-500 to-pink-600'
-    },
-    {
-      title: 'Development Tools',
-      icon: <Terminal className="w-6 h-6" />,
-      skills: ['Terminal Dashboards', 'Chatbot Integrations', 'ML Models', 'System Monitoring', 'API Integration'],
-      color: 'from-indigo-500 to-blue-600'
-    },
-    {
-      title: 'Version Control',
-      icon: <GitBranch className="w-6 h-6" />,
-      skills: ['Git', 'GitHub', 'GitLab', 'Version Control', 'Collaboration'],
-      color: 'from-gray-600 to-gray-800'
-    }
-  ];
 
   return (
     <section
       id="tech-stack"
       ref={sectionRef}
-      className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden"
+      className="py-20 relative z-10"
+      aria-labelledby="tech-stack-title"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-40 right-10 w-64 h-64 bg-gradient-to-r from-[#11efef] to-[#E9967A] rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section Header */}
-        <div
-          className={`text-center mb-16 transform transition-all duration-1000 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}
-        >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            🧠 <span className="bg-gradient-to-r from-[#11efef] to-[#E9967A] bg-clip-text text-transparent">Tech Stack</span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            A comprehensive toolkit spanning multiple domains of modern software development
-          </p>
-        </div>
-
-        {/* Tech Categories Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {techCategories.map((category, index) => (
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="tech-stack-title" className="text-3xl sm:text-4xl font-bold mb-10 text-center gradient-text">
+          Tech Stack
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {techGroups.map((group, idx) => (
             <div
-              key={category.title}
-              className={`transform transition-all duration-1000 ${
-                isVisible 
-                  ? 'translate-y-0 opacity-100' 
-                  : 'translate-y-10 opacity-0'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              key={group.title}
+              className={`glass-card p-6 rounded-2xl shadow-lg transition-all duration-700 ${visible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}
+              style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
+              tabIndex={0}
+              aria-label={group.title}
             >
-              <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                {/* Gradient Border Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${category.color} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                
-                {/* Header */}
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} text-white`}>
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
-                </div>
-
-                {/* Skills */}
-                <div className="space-y-2">
-                  {category.skills.map((skill, skillIndex) => (
+              <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                {group.title}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-6">
+                {group.items.map((item, i) => (
+                  <div
+                    key={item.title}
+                    className="flex flex-col items-center group focus-within:ring-2 focus-within:ring-blue-400"
+                    tabIndex={0}
+                    aria-label={item.title}
+                  >
                     <div
-                      key={skill}
-                      className={`transform transition-all duration-500 ${
-                        isVisible 
-                          ? 'translate-x-0 opacity-100' 
-                          : 'translate-x-4 opacity-0'
-                      }`}
-                      style={{ transitionDelay: `${(index * 100) + (skillIndex * 50)}ms` }}
+                      className="mb-2 p-3 rounded-xl bg-white/30 dark:bg-gray-800/40 shadow-md backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xl"
+                      data-tooltip-id={`tooltip-${group.title}-${i}`}
+                      data-tooltip-content={item.desc}
+                      aria-describedby={`tooltip-${group.title}-${i}`}
                     >
-                      <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">
-                          {skill}
-                        </span>
-                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#11efef] to-[#E9967A]"></div>
-                      </div>
+                      {(() => {
+                        const Icon = item.icon as unknown as React.FC<unknown>;
+                        return <Icon {...({ size: 32, 'aria-label': item.title } as any)} />;
+                      })()}
                     </div>
-                  ))}
-                </div>
+                    <span className="text-base font-medium text-gray-800 dark:text-gray-200">
+                      {item.title}
+                    </span>
+                    <div className="flex gap-3 mt-2 justify-center w-full">
+                      <a
+                        href="https://github.com/naveen55513"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View GitHub"
+                        title="View GitHub"
+                        className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      >
+                        <Github size={18} className="text-gray-700 dark:text-gray-200" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/naveen-chundawat-4300822bb/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View LinkedIn"
+                        title="View LinkedIn"
+                        className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      >
+                        <Linkedin size={18} className="text-blue-700 dark:text-blue-300" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Skills Summary */}
-        <div
-          className={`mt-16 text-center transform transition-all duration-1000 delay-500 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}
-        >
-          <div className="bg-gradient-to-r from-[#11efef]/10 to-[#E9967A]/10 rounded-2xl p-8 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              🚀 Recent Automation Projects
-            </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
-              {[
-                { icon: '📱', title: 'WhatsApp Automation', desc: 'Python messaging bot' },
-                { icon: '📧', title: 'Email Automation', desc: 'SMTP integration' },
-                { icon: '💬', title: 'SMS Automation', desc: 'Gateway integration' },
-                { icon: '🔍', title: 'Google Search API', desc: 'Automated searches' },
-                { icon: '💾', title: 'RAM Monitoring', desc: 'System analytics' }
-              ].map((project, index) => (
-                <div
-                  key={project.title}
-                  className={`transform transition-all duration-500 ${
-                    isVisible 
-                      ? 'translate-y-0 opacity-100' 
-                      : 'translate-y-4 opacity-0'
-                  }`}
-                  style={{ transitionDelay: `${600 + (index * 100)}ms` }}
-                >
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4 text-center hover:scale-105 transition-transform duration-200 border border-gray-200 dark:border-gray-700">
-                    <div className="text-2xl mb-2">{project.icon}</div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      {project.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              <span className="text-[#E9967A] font-semibold">Constantly evolving</span> with the latest technologies and best practices in software development, 
-              automation scripting, machine learning, and system integration to deliver practical, real-world solutions.
-            </p>
-          </div>
-        </div>
       </div>
+      {/* Removed Tooltip component due to type incompatibility */}
     </section>
   );
 };

@@ -7,4 +7,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      external: ['react-icons/fa', 'react-modal', 'framer-motion', 'react-syntax-highlighter'],
+    },
+  },
 });

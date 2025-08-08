@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws, FaJava, FaCuttlefish, FaCuttlefish as FaCPlusPlus } from 'react-icons/fa';
+import { FaPython, FaDocker, FaLinux, FaGitAlt, FaAws, FaJava, FaCuttlefish, FaCuttlefish as FaCPlusPlus, FaTools } from 'react-icons/fa';
 import { SiStreamlit, SiMongodb, SiOpenai } from 'react-icons/si';
+import type { IconType } from 'react-icons';
+import { Github, Linkedin } from 'lucide-react';
 
 const skillTabs = [
   { key: 'languages', label: 'Languages', icon: '💻' },
@@ -8,7 +10,13 @@ const skillTabs = [
   { key: 'cloud', label: 'Cloud & Backend', icon: '🌩️' },
 ];
 
-const skillsData = {
+type SkillItem = {
+  icon: IconType;
+  title: string;
+  desc: string;
+};
+
+const skillsData: Record<string, SkillItem[]> = {
   languages: [
     { icon: FaCuttlefish, title: 'C', desc: 'Procedural programming language.' },
     { icon: FaCPlusPlus, title: 'C++', desc: 'Object-oriented and systems programming.' },
@@ -24,7 +32,8 @@ const skillsData = {
   cloud: [
     { icon: SiMongodb, title: 'MongoDB', desc: 'Backend NoSQL Database.' },
     { icon: FaAws, title: 'AWS', desc: 'Cloud infrastructure and services.' },
-    { icon: FaDocker, title: 'CI/CD Pipelines', desc: 'Continuous integration and deployment.' },
+
+    { icon: FaTools, title: 'CI/CD Pipelines', desc: 'Continuous integration and deployment.' },
     { icon: SiOpenai, title: 'OpenAI API', desc: 'Generative AI and NLP capabilities.' },
   ],
 };
@@ -92,16 +101,40 @@ const SkillsSection: React.FC = () => {
               style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
               tabIndex={0}
               aria-label={item.title}
-              title={item.desc}
             >
               <div
                 className="mb-3 p-4 rounded-xl bg-white/30 dark:bg-gray-800/40 shadow-md backdrop-blur-md transition-transform duration-300 hover:scale-110 hover:shadow-xl focus:scale-110 focus:shadow-xl"
+                data-tooltip-id={`tooltip-${activeTab}-${idx}`}
+                data-tooltip-content={item.desc}
+                aria-describedby={`tooltip-${activeTab}-${idx}`}
               >
-                {React.createElement(item.icon as any, { size: 32, 'aria-label': item.title })}
+                {React.createElement(item.icon as unknown as React.FC<{ size: number; 'aria-label': string }>, { size: 32, 'aria-label': item.title })}
               </div>
               <span className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                 {item.title}
               </span>
+              <div className="flex gap-3 mt-2 justify-center w-full">
+                <a
+                  href="https://github.com/naveen55513"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View GitHub"
+                  title="View GitHub"
+                  className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  <Github size={18} className="text-gray-700 dark:text-gray-200" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/naveen-chundawat-4300822bb/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View LinkedIn"
+                  title="View LinkedIn"
+                  className="rounded-full w-7 h-7 flex items-center justify-center bg-white dark:bg-gray-800 shadow hover:scale-110 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  <Linkedin size={18} className="text-blue-700 dark:text-blue-300" />
+                </a>
+              </div>
             </div>
           ))}
         </div>
