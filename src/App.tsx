@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import TechStack from './components/TechStack';
+import SkillsAndTechStack from './components/SkillsAndTechStack';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingLines from './components/FloatingLines';
-import SkillsSection from './components/SkillsSection';
-import PythonTasksSection from './components/PythonTasksSection';
 import IntroAnimation from './components/IntroAnimation';
 
 function App() {
@@ -45,9 +43,7 @@ function App() {
         <Header />
         <main>
           <Hero />
-          <SkillsSection />
-          <TechStack />
-          <PythonTasksSection />
+          <SkillsAndTechStack />
           <Projects />
           <Education />
           <Contact />

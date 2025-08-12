@@ -25,15 +25,25 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-teal-800 overflow-hidden"
+        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-900 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
+        {/* Animated Background Blobs - matching Hero component */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="animated-blob bg-blue-500 w-64 h-64 sm:w-96 sm:h-96 top-20 left-4 sm:left-20"></div>
+          <div className="animated-blob bg-blue-600 w-56 h-56 sm:w-80 sm:h-80 top-40 right-4 sm:right-20" style={{ animationDelay: '2s' }}></div>
+          <div className="animated-blob bg-blue-400 w-48 h-48 sm:w-72 sm:h-72 bottom-20 left-1/3" style={{ animationDelay: '4s' }}></div>
+        </div>
+
+        {/* Radial Gradient Overlay - matching Hero component */}
+        <div className="absolute inset-0 radial-bg opacity-50"></div>
+
         {/* Name animation */}
         <motion.h1 
-          className="text-4xl md:text-6xl font-bold text-white mb-4 relative"
+          className="text-4xl md:text-6xl font-bold text-white mb-4 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
@@ -66,7 +76,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
               Naveen Singh Chundawat
             </motion.span>
             <motion.span 
-              className="absolute bottom-0 left-0 h-[6px] bg-gradient-to-r from-blue-400 to-teal-300 z-0" 
+              className="absolute bottom-0 left-0 h-[6px] bg-gradient-to-r from-blue-400 to-blue-300 z-0" 
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 1.3, duration: 0.8 }}
@@ -76,7 +86,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
         
         {/* Tagline animation */}
         <motion.div
-          className="text-xl md:text-2xl text-cyan-100 mb-8 flex flex-wrap justify-center gap-x-3"
+          className="text-xl md:text-2xl text-gray-300 mb-8 flex flex-wrap justify-center gap-x-3 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.5 }}
@@ -92,9 +102,9 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
                 type: "spring",
                 stiffness: 100
               }}
-              className={text === '|' ? 'text-blue-400' : ''}
+              className={text === '|' ? 'text-blue-400' : 'text-gray-300'}
               style={text !== '|' ? { 
-                textShadow: "0 0 8px rgba(6, 182, 212, 0.5)"
+                textShadow: "0 0 8px rgba(96, 165, 250, 0.5)"
               } : {}}
             >
               {text}
@@ -104,7 +114,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
         
         {/* Particle/line animation */}
         <motion.div 
-          className="relative w-80 h-40 mb-8"
+          className="relative w-80 h-40 mb-8 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.2, duration: 0.5 }}
@@ -142,11 +152,11 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
             <defs>
               <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#60a5fa" />
-                <stop offset="100%" stopColor="#2dd4bf" />
+                <stop offset="100%" stopColor="#3b82f6" />
               </linearGradient>
               <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="0%">
                 <stop offset="0%" stopColor="#60a5fa" />
-                <stop offset="100%" stopColor="#2dd4bf" />
+                <stop offset="100%" stopColor="#3b82f6" />
               </linearGradient>
             </defs>
           </svg>
@@ -155,7 +165,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute bg-gradient-to-r from-blue-400 to-cyan-300 h-[2px] rounded-full"
+              className="absolute bg-gradient-to-r from-blue-400 to-blue-300 h-[2px] rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -184,7 +194,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={`p-${i}`}
-              className="absolute rounded-full bg-gradient-to-r from-cyan-300 to-blue-300"
+              className="absolute rounded-full bg-gradient-to-r from-blue-300 to-blue-400"
               style={{
                 left: '50%',
                 top: '50%',
@@ -210,7 +220,7 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
         
         {/* Built with love */}
         <motion.div
-          className="text-sm text-cyan-100 mt-4"
+          className="text-sm text-gray-300 mt-4 z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3, duration: 0.5 }}
@@ -245,12 +255,12 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
         {/* Skip button */}
         {showSkip && (
           <motion.button
-            className="absolute bottom-8 right-8 text-sm text-cyan-100 hover:text-white px-4 py-2 rounded-full border border-cyan-400/30 hover:border-cyan-400 transition-colors backdrop-blur-sm"
+            className="absolute bottom-8 right-8 text-sm text-gray-300 hover:text-white px-4 py-2 rounded-full border border-blue-400/30 hover:border-blue-400 transition-colors backdrop-blur-sm z-10"
             onClick={onComplete}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 10px rgba(6, 182, 212, 0.3)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 10px rgba(59, 130, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
             aria-label="Skip introduction animation"
           >
